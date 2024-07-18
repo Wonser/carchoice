@@ -1,0 +1,36 @@
+<?php $img = get_sub_field('bg'); ?>
+<section class="prices" style="background: url(<?php echo $img['url']; ?>) no-repeat center / cover;">
+    <h2 class="h2"><?php the_sub_field('title'); ?></h2>
+    <p class="regular-l"><?php the_sub_field('desc'); ?></p>
+    <div class="swiper prices-list">
+        <div class="swiper-wrapper">
+            <?php 
+                while( have_rows('list') ): the_row();
+            ?>
+
+            <div class="prices-list-item swiper-slide">
+                <?php 
+                    while( have_rows('elem') ): the_row();
+                    
+                    $name = get_sub_field('name');
+                    $value = get_sub_field('value');
+                ?>
+
+                <p class="medium-m"><?php echo $name; ?></p>
+                <p class="h3"><?php echo $value; ?></p>
+                    
+                <?php
+                    endwhile; 
+                ?>
+                
+                <div class="main-btn semibold-s call-btn" data-text="Оставить заявку">Оставить заявку</div>
+            </div>
+                    
+            <?php
+                endwhile; 
+                wp_reset_postdata();
+            ?>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+</section>

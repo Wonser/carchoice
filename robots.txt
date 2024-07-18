@@ -1,0 +1,23 @@
+User-agent: *                   # РЎРѕР·РґР°РµРј СЃРµРєС†РёСЋ РїСЂР°РІРёР» РґР»СЏ СЂРѕР±РѕС‚РѕРІ. * Р·РЅР°С‡РёС‚ РґР»СЏ РІСЃРµС…
+								# СЂРѕР±РѕС‚РѕРІ. Р§С‚РѕР±С‹ СѓРєР°Р·Р°С‚СЊ СЃРµРєС†РёСЋ РїСЂР°РІРёР» РґР»СЏ РѕС‚РґРµР»СЊРЅРѕРіРѕ
+								# СЂРѕР±РѕС‚Р°, РІРјРµСЃС‚Рѕ * СѓРєР°Р¶РёС‚Рµ РµРіРѕ РёРјСЏ: GoogleBot, Yandex.
+Disallow: /cgi-bin              # РЎС‚Р°РЅРґР°СЂС‚РЅР°СЏ РїР°РїРєР° РЅР° С…РѕСЃС‚РёРЅРіРµ.
+Disallow: /wp-admin/            # Р—Р°РєСЂС‹РІР°РµРј Р°РґРјРёРЅРєСѓ.
+Allow: /wp-admin/admin-ajax.php # РћС‚РєСЂРѕРµРј Р°СЏРєСЃ.
+Disallow: /?                    # Р’СЃРµ РїР°СЂР°РјРµС‚СЂС‹ Р·Р°РїСЂРѕСЃР° РЅР° РіР»Р°РІРЅРѕР№.
+Disallow: *?s=                  # РџРѕРёСЃРє.
+Disallow: *&s=                  # РџРѕРёСЃРє.
+Disallow: /search               # РџРѕРёСЃРє.
+Disallow: /author/              # РђСЂС…РёРІ Р°РІС‚РѕСЂР°.
+Disallow: /tag/              	# РђСЂС…РёРІ С‚РµРіРѕРІ.
+Disallow: /thanks/         # РђСЂС…РёРІ С‚РµРіРѕРІ.
+Disallow: */embed$              # Р’СЃРµ РІСЃС‚СЂР°РёРІР°РЅРёСЏ.
+Disallow: */xmlrpc.php          # Р¤Р°Р№Р» WordPress API
+Disallow: *utm*=                # РЎСЃС‹Р»РєРё СЃ utm-РјРµС‚РєР°РјРё
+Disallow: *openstat=            # РЎСЃС‹Р»РєРё СЃ РјРµС‚РєР°РјРё openstat
+Disallow: /wp-includes/         # РЎСЃС‹Р»РєРё СЃ РјРµС‚РєР°РјРё openstat
+Disallow: /wp-json/            	# РЎСЃС‹Р»РєРё СЃ РјРµС‚РєР°РјРё openstat
+Disallow: /cars/brand/            	
+
+
+Sitemap: https://carchoice.club/sitemap_index.xml
