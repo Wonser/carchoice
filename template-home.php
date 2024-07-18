@@ -10,6 +10,7 @@ get_header();
         <p class="medium-s hero-inner-heading"><?php the_field('hero-heading'); ?></p>
         <h1 class="h1"><?php the_field('hero-title'); ?></h1>
         <p class="medium-l"><?php the_field('hero-desc'); ?></p>
+        <?php echo do_shortcode('[contact-form-7 id="1fb3efb" title="Оставить заявку Новая"]'); ?>
     </div>
 </section>
 
@@ -103,9 +104,8 @@ get_header();
         <div class="catalog-list-item">
             <a href="<?php the_permalink(); ?>"><img src="<?php echo $card['img']['sizes']['large']; ?>" alt="photo"></a>
             <p class="h5"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></p>
-            <p class="regular-m"><?php echo $card['year']; ?></p>
-            <p class="medium-xs"><?php echo $card['model']; ?></p>
-            <p class="h5 price"><?php echo $card['price']; ?></p>
+            <?php /* ?><p class="regular-m"><?php echo $card['year']; ?></p><?php */ ?>
+            <p class="medium-s">Цена подбора <span class="semibold-s"><?php echo $card['price']; ?></span></p>
             <div class="catalog-list-item-btns">
                 <div class="primary-btn semibold-s call-btn" data-text="<?php the_title(); ?>">Заказать подбор</div>
                 <a href="<?php the_permalink(); ?>" class="secondary-btn semibold-s">Подробнее</a>
@@ -113,7 +113,7 @@ get_header();
         </div>
 
     <?php 
-        $i++;
+        // $i++;
         endforeach; 
         wp_reset_postdata();
     ?>
@@ -180,6 +180,61 @@ get_header();
     </div>
 </section>
 
+
+<section class="auto">
+    <p class="h2"><?php the_field('auto-title'); ?></p>
+    <p class="regular-l"><?php the_field('auto-desc'); ?></p>
+    <div class="auto-list swiper">
+        <div class="swiper-wrapper">
+        <?php
+            $catalog = get_field('auto-list');
+            foreach( $catalog as $post ): 
+            setup_postdata($post); 
+
+            $card = get_field('card');
+        ?>
+            <div class="swiper-slide auto-list-item">
+                <a href="<?php the_permalink(); ?>" class="auto-list-item-img"><img src="<?php echo $card['img']['sizes']['thumbnail_500']; ?>" alt="photo"></a> 
+                <div class="auto-list-item-inner">
+                    <p class="h4"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></p>
+                    <p class="medium-s"><?php echo $card['date']; ?></p>
+                    <div class="auto-list-item-list">
+                        <?php 
+                            foreach($card['list'] as $item) :
+                        ?>
+                            <div class="auto-list-item-list-item">
+                                <p class="regular-m">
+                                    <span><?php echo $item['name']; ?></span>
+                                    <?php echo $item['value']; ?>
+                                </p>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                    <p class="medium-m"><?php echo $card['check']; ?></p>
+                    <p class="regular-s">Стоимость автомобиля</p>
+                    <p class="h4 price"><?php echo $card['price']; ?></p>
+                    <div class="auto-list-item-btns">
+                        <div class="primary-btn semibold-s call-btn" data-text="<?php the_title(); ?>">Хочу такой же</div>
+                        <a href="<?php the_permalink(); ?>" class="secondary-btn semibold-s">Смотреть отчет</a>
+                    </div>
+                </div>
+            </div>
+
+        <?php 
+            $i++;
+            endforeach; 
+            wp_reset_postdata();
+        ?>
+        </div>
+    </div>
+    <a href="/cars" class="section-link">
+        <p class="semibold-m">Смотреть все подобранные авто</p>
+        <div class="section-link-icon">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/dropdown.svg" alt="icon" class="svg">
+        </div>
+    </a>
+</section>
+
 <section class="services">
     <p class="h2"><?php the_field('services-title'); ?></p>
     <p class="regular-l"><?php the_field('services-desc'); ?></p>
@@ -193,7 +248,7 @@ get_header();
         $card = get_field('card');
     ?>
         <div class="services-list-item <?php if($card['off']) { echo 'disabled';} ?>">
-            <p class="h3"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></p>
+            <p class="h4"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></p>
             <p class="regular-m"><?php echo $card['desc']; ?></p>
             <div class="services-list-item-list <?php if($i == 3) {echo "column";} ?>">
                 <?php 
@@ -210,9 +265,9 @@ get_header();
                 <img src="<?php echo $card['img-mobile']['url']; ?>" alt="photo" class="mobile">
             </a>
             <?php if($card['price']) : ?>
-                <p class="h3 price"><?php echo $card['price']; ?></p>
+                <p class="h4 price"><?php echo $card['price']; ?></p>
             <?php else : ?>
-                <p class="h3 price gray">по договоренности</p>
+                <p class="h4 price gray">по договоренности</p>
             <?php endif; ?>
             <p class="regular-s"><?php echo $card['time']; ?></p>
             <div class="services-list-item-btns">
@@ -244,10 +299,10 @@ get_header();
 
 <section class="about">
     <p class="h2"><?php the_field('about-title'); ?></p>
-    <p class="regular-l"><?php the_field('about-desc'); ?></p>
+    <p class="regular-m about-subtitle"><?php the_field('about-desc'); ?></p>
     <?php $img = get_field('about-img'); ?>
     <img src="<?php echo $img['url']; ?>" alt="img">
-    <div class="about-list">
+    <div class="about-list about-list-mobile">
         <?php 
             while( have_rows('about-list') ): the_row(); 
                 $title = get_sub_field('title');
@@ -256,7 +311,7 @@ get_header();
 
         <div class="about-list-item">
             <img src="<?php echo get_template_directory_uri(); ?>/assets/img/check.svg" alt="icon">
-            <p class="h3"><?php echo $title; ?></p>
+            <p class="h4"><?php echo $title; ?></p>
             <p class="regular-m"><?php echo $desc; ?></p>
         </div>
                 
@@ -265,66 +320,33 @@ get_header();
             wp_reset_postdata();
         ?>
     </div>
+    <div class="swiper about-swiper">
+        <div class="swiper-wrapper">
+            <?php 
+                while( have_rows('about-list') ): the_row(); 
+                    $title = get_sub_field('title');
+                    $desc = get_sub_field('desc');
+            ?>
+
+            <div class="swiper-slide about-list-item">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/check.svg" alt="icon">
+                <p class="h4"><?php echo $title; ?></p>
+                <p class="regular-m"><?php echo $desc; ?></p>
+            </div>
+                    
+            <?php
+                endwhile; 
+                wp_reset_postdata();
+            ?>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
     <a href="/about" class="main-btn semibold-s">Подробнее о компании</a>
 </section>
 
 <?php echo get_template_part( 'template-parts/tg' ); ?>
 
 <?php echo get_template_part( 'template-parts/geo' ); ?>
-
-<section class="auto">
-    <p class="h2"><?php the_field('auto-title'); ?></p>
-    <p class="regular-l"><?php the_field('auto-desc'); ?></p>
-    <div class="auto-list swiper">
-        <div class="swiper-wrapper">
-        <?php
-            $catalog = get_field('auto-list');
-            foreach( $catalog as $post ): 
-            setup_postdata($post); 
-
-            $card = get_field('card');
-        ?>
-            <div class="swiper-slide auto-list-item">
-                <a href="<?php the_permalink(); ?>" class="auto-list-item-img"><img src="<?php echo $card['img']['sizes']['thumbnail_500']; ?>" alt="photo"></a> 
-                <div class="auto-list-item-inner">
-                    <p class="h3"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></p>
-                    <p class="medium-s"><?php echo $card['date']; ?></p>
-                    <div class="auto-list-item-list">
-                        <?php 
-                            foreach($card['list'] as $item) :
-                        ?>
-                            <div class="auto-list-item-list-item">
-                                <p class="regular-m">
-                                    <span><?php echo $item['name']; ?></span>
-                                    <?php echo $item['value']; ?>
-                                </p>
-                            </div>
-                        <?php endforeach; ?>
-                    </div>
-                    <p class="medium-m"><?php echo $card['check']; ?></p>
-                    <p class="regular-s">Стоимость автомобиля</p>
-                    <p class="h3 price"><?php echo $card['price']; ?></p>
-                    <div class="auto-list-item-btns">
-                        <div class="primary-btn semibold-s call-btn" data-text="<?php the_title(); ?>">Хочу такой же</div>
-                        <a href="<?php the_permalink(); ?>" class="secondary-btn semibold-s">Смотреть отчет</a>
-                    </div>
-                </div>
-            </div>
-
-        <?php 
-            $i++;
-            endforeach; 
-            wp_reset_postdata();
-        ?>
-        </div>
-    </div>
-    <a href="/cars" class="section-link">
-        <p class="semibold-m">Смотреть все подобранные авто</p>
-        <div class="section-link-icon">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/dropdown.svg" alt="icon" class="svg">
-        </div>
-    </a>
-</section>
 
 <?php echo get_template_part( 'template-parts/appeal' ); ?>
 
@@ -405,7 +427,7 @@ endwhile;
                 <div class="news-list-item-img"><img src="<?php echo $card['img']['sizes']['large']; ?>" alt="photo"></div>
                 <div class="news-list-item-inner">
                     <p class="medium-s"><?php echo get_the_date(); ?></p>
-                    <p class="h4"><?php the_title(); ?></p>
+                    <p class="h5"><?php the_title(); ?></p>
                     <p class="regular-m"><?php echo $card['desc']; ?></p>
                 </div>
             </a>

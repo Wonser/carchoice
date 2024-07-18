@@ -319,9 +319,6 @@ get_header();
         <div class="main-btn semibold-s call-btn" data-text="Оставить заявку">Оставить заявку</div>
     </section>
 
-    <?php echo get_template_part( 'template-parts/appeal' ); ?>
-    <?php echo get_template_part( 'template-parts/geo' ); ?>
-    <?php echo get_template_part( 'template-parts/review' ); ?>
     <?php echo get_template_part( 'template-parts/tg' ); ?>
     <?php echo get_template_part( 'template-parts/form' ); ?>
 <?php endif; ?>  

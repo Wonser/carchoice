@@ -6,7 +6,7 @@
     </div>
     <div class="tg-right">
         <p class="h2"><?php the_field('tg-title', 13); ?></p>
-        <p class="regular-l"><?php the_field('tg-desc', 13); ?></p>
+        <p class="regular-m"><?php the_field('tg-desc', 13); ?></p>
         <a href="<?php the_field('tg-link', 13) ?>" class="main-btn semibold-s" target="blank">
             Подписаться в Телеграм
         </a>

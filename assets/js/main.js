@@ -193,6 +193,45 @@ jQuery(document).ready(function($) {
     }
   });
 
+  var aboutSwiper = new Swiper(".about-swiper", {
+    slidesPerView: 1,
+    spaceBetween: 6,
+    pagination: {
+      el: ".about .swiper-pagination",
+      clickable: true,
+    },
+  });
+
+  var defendSwiper = new Swiper(".defend-swiper", {
+    slidesPerView: 1,
+    spaceBetween: 6,
+    autoHeight: true,
+    navigation: {
+      nextEl: '.defend .swiper-button-next',
+      prevEl: '.defend .swiper-button-prev',
+    },
+  });
+
+  var stepsSwiper = new Swiper(".steps-swiper", {
+    slidesPerView: 1,
+    spaceBetween: 6,
+    autoHeight: true,
+    navigation: {
+      nextEl: '.steps .swiper-button-next',
+      prevEl: '.steps .swiper-button-prev',
+    },
+  });
+
+  var tabsSwiper = new Swiper(".guarantee-tabs-item.active .tabs-swiper", {
+    slidesPerView: 1,
+    spaceBetween: 6,
+    autoHeight: true,
+    navigation: {
+      nextEl: '.guarantee-tabs-item.active .swiper-button-next',
+      prevEl: '.guarantee-tabs-item.active .swiper-button-prev',
+    },
+  });
+
   var reviewSwiper = new Swiper(".review-swiper", {
     slidesPerView: 1,
     spaceBetween: 6,
@@ -211,7 +250,7 @@ jQuery(document).ready(function($) {
       991: {
         slidesPerView: 2,
         loop: false,
-		autoHeight: false,
+        autoHeight: false,
       },
       1200: {
         slidesPerView: 3,
@@ -336,6 +375,16 @@ jQuery(document).ready(function($) {
         .removeClass("active")
         .eq($(this).index())
         .addClass("active");
+
+    var tabsSwiper = new Swiper(".guarantee-tabs-item.active .tabs-swiper", {
+      slidesPerView: 1,
+      spaceBetween: 6,
+      autoHeight: true,
+      navigation: {
+        nextEl: '.guarantee-tabs-item.active .swiper-button-next',
+        prevEl: '.guarantee-tabs-item.active .swiper-button-prev',
+      },
+    });
   });
 
   $( ".wpcf7-select option:first" ).attr('disabled', 'disabled');

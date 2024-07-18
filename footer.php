@@ -12,7 +12,7 @@
 	<footer class="footer">
 		<div class="footer-top">
 			<div class="footer-top-left">
-				<a href="tel:<?php the_field('phone', 'option'); ?>" class="phone h2">
+				<a href="tel:<?php the_field('phone', 'option'); ?>" class="phone h1">
 					<?php the_field('phone', 'option'); ?>
 				</a>
 				<p class="regular-s"><?php the_field('address', 'option'); ?></p>
@@ -27,7 +27,7 @@
 				<div class="socials">
 					<?php 
 						$i = 0;
-						$text = array("Telegram", "Whatsapp", "ВКонтакте");
+						$text = array("Telegram", "Whatsapp", "ВКонтакте", "Youtube");
 						while( have_rows('socials', 'option') ): the_row(); 
 							$link = get_sub_field('link');
 							$icon = get_sub_field('icon');

@@ -135,6 +135,7 @@
 			wp_reset_postdata();
 		?>
 		<div class="main-btn call-btn semibold-s" data-text="Заявка на консультацию">Заявка на консультацию</div>
+		<a href="tel:<?php the_field('phone', 'option'); ?>" class="main-btn semibold-s phone-btn"><?php the_field('phone', 'option'); ?></a>
 	</div>
 	<div class="bottom-fixed-img">
 		<?php $img = get_field('fixed-img', 'option'); ?>

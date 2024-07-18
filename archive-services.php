@@ -13,6 +13,7 @@ get_header();
         </div>
         <h1 class="h1"><?php the_field('services-title', 'option'); ?></h1>
         <p class="medium-l"><?php the_field('services-desc', 'option'); ?></p>
+        <?php echo do_shortcode('[contact-form-7 id="1fb3efb" title="Оставить заявку Новая"]'); ?>
     </div>
 </section>
 
@@ -46,7 +47,7 @@ get_header();
           while($loop->have_posts()) : $loop->the_post();
 
         $card = get_field('card');
-        $class = "h3";
+        $class = "h4";
 
         if($i > 6) {
             $class = "h4";

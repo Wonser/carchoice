@@ -28,7 +28,7 @@
                             <img src="<?php echo $card['img']['url']; ?>" alt="photo">
                         </a> 
                         <div class="auto-list-item-inner">
-                            <p class="h3"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></p>
+                            <p class="h4"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></p>
                             <p class="medium-s date"><?php echo $card['date']; ?></p>
                             <?php if($card['service']) : ?>
                                 <p class="medium-s service"><?php echo $card['service']; ?></p>
@@ -47,7 +47,7 @@
                             </div>
                             <p class="medium-m"><?php echo $card['check']; ?></p>
                             <p class="regular-s">Стоимость автомобиля</p>
-                            <p class="h3 price"><?php echo $card['price']; ?></p>
+                            <p class="h4 price"><?php echo $card['price']; ?></p>
                             <div class="auto-list-item-btns">
                                 <div class="primary-btn semibold-s call-btn" data-text="<?php the_title(); ?>">Хочу такой же</div>
                                 <a href="<?php the_permalink(); ?>" class="secondary-btn semibold-s">Смотреть отчет</a>

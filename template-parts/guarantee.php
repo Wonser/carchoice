@@ -52,6 +52,37 @@ while ( have_rows('section', 13) ) : the_row();
                     endwhile; 
                 ?>
             </div>
+            <div class="swiper tabs-swiper">
+                <div class="swiper-wrapper">
+                    <?php 
+                        while( have_rows('list') ): the_row();
+                        
+                        $icon = get_sub_field('icon');
+                        $title = get_sub_field('title');
+                        $desc = get_sub_field('desc');
+                    ?>
+
+                    <div class="swiper-slide tabs-list-item">
+                        <div class="tabs-list-item-icon">
+                            <img src="<?php echo $icon['url']; ?>" alt="icon" class="svg">
+                        </div>
+                        <p class="h5"><?php echo $title; ?></p>
+                        <div class="regular-m"><?php echo $desc; ?></div>
+                    </div>
+                        
+                    <?php
+                        endwhile; 
+                    ?>
+                </div>
+                <div class="swiper-nav">
+                    <div class="swiper-button-prev">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/dropdown.svg" alt="arrow" class="svg">
+                    </div>
+                    <div class="swiper-button-next">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/dropdown.svg" alt="arrow" class="svg">
+                    </div>
+                </div>
+            </div>
         </div>
                     
         <?php
@@ -116,6 +147,37 @@ else :
                 <?php
                     endwhile; 
                 ?>
+            </div>
+            <div class="swiper tabs-swiper">
+                <div class="swiper-wrapper">
+                    <?php 
+                        while( have_rows('list') ): the_row();
+                        
+                        $icon = get_sub_field('icon');
+                        $title = get_sub_field('title');
+                        $desc = get_sub_field('desc');
+                    ?>
+
+                    <div class="swiper-slide tabs-list-item">
+                        <div class="tabs-list-item-icon">
+                            <img src="<?php echo $icon['url']; ?>" alt="icon" class="svg">
+                        </div>
+                        <p class="h5"><?php echo $title; ?></p>
+                        <div class="regular-m"><?php echo $desc; ?></div>
+                    </div>
+                        
+                    <?php
+                        endwhile; 
+                    ?>
+                </div>
+                <div class="swiper-nav">
+                    <div class="swiper-button-prev">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/dropdown.svg" alt="arrow" class="svg">
+                    </div>
+                    <div class="swiper-button-next">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/dropdown.svg" alt="arrow" class="svg">
+                    </div>
+                </div>
             </div>
         </div>
                     

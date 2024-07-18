@@ -29,7 +29,7 @@ while ( have_rows('section', 13) ) : the_row();
                         $text = get_sub_field('text');
                     ?>
 
-                    <p class="medium-m"><?php echo $text; ?></p>
+                    <p class="regular-m"><?php echo $text; ?></p>
                         
                     <?php
                         endwhile; 
@@ -63,7 +63,7 @@ while ( have_rows('section', 13) ) : the_row();
                         $text = get_sub_field('text');
                     ?>
 
-                    <p class="medium-m"><?php echo $text; ?></p>
+                    <p class="regular-m"><?php echo $text; ?></p>
                         
                     <?php
                         endwhile; 
@@ -80,7 +80,7 @@ while ( have_rows('section', 13) ) : the_row();
         </div>
     </div>
     
-    <p class="regular-l"><?php the_sub_field('desc'); ?></p>
+    <p class="regular-m"><?php the_sub_field('desc'); ?></p>
     <div class="test-btns">
         <div class="main-btn semibold-s call-btn" data-text="Заказать проверку авто">Заказать проверку авто</div>
         <div class="secondary-btn semibold-s call-btn" data-text="Получить консультацию">Получить консультацию</div>

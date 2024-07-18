@@ -17,6 +17,7 @@ $card = get_field('card');
             <span class="breadcrumbs-item"><?php the_title(); ?></span>
         </div>
         <h1 class="h1"><?php the_title(); ?></h1>
+        <img src="<?php echo $card['img']['url']; ?>" alt="photo">
         <div class="news-main-share">
             <?php echo do_shortcode('[addtoany]'); ?>
             <span class="medium-s"><?php echo get_the_date(); ?></span>
@@ -51,6 +52,7 @@ $card = get_field('card');
                 'posts_per_page' => 4,
                 'orderby' => 'rand',
                 'order' => 'DESC',
+                'post__not_in' => array (get_the_ID()),
             ));
 
 

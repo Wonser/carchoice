@@ -1,7 +1,7 @@
 <?php $img = get_field('geo-img', 13); $map = get_field('geo-map', 13); $city = get_field('geo-city', 13); ?>
 <section class="geo">
     <p class="h2"><?php the_field('geo-title', 13); ?></p>
-    <p class="regular-l"><?php the_field('geo-desc', 13); ?></p>
+    <p class="regular-m geo-subtitle"><?php the_field('geo-desc', 13); ?></p>
     <div class="geo-img">
         <img src="<?php echo $img['url']; ?>" alt="map" class="geo-img-car">
         <img src="<?php echo $map['url']; ?>" alt="map" class="geo-img-map svg">
