@@ -236,7 +236,7 @@ jQuery(document).ready(function($) {
     slidesPerView: 1,
     spaceBetween: 6,
     loop: true,
-	autoHeight: true,
+    autoHeight: true,
     navigation: {
       nextEl: '.review .swiper-button-next',
       prevEl: '.review .swiper-button-prev',

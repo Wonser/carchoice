@@ -221,7 +221,6 @@ get_header();
             </div>
 
         <?php 
-            $i++;
             endforeach; 
             wp_reset_postdata();
         ?>
