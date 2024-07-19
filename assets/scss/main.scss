@@ -7227,6 +7227,10 @@
          }
        }
      }
+
+     &-swiper {
+        display: none;
+     }
    
      @media screen and (max-width: 1400px) {
        &-inner {
