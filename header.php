@@ -60,6 +60,9 @@
 			<img src="<?php echo get_template_directory_uri(); ?>/assets/img/call.svg" alt="call" class="svg">
 			<?php the_field('phone', 'option'); ?>
 		</a>
+		<div class="mode-toggle">
+			<div class="mode-toggle-handle"></div>
+		</div>
 		<div class="socials">
 			<?php 
 				while( have_rows('socials', 'option') ): the_row(); 
