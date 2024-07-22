@@ -17,7 +17,7 @@
                 ?>
 
                 <p class="medium-m"><?php echo $name; ?></p>
-                <p class="h3"><?php echo $value; ?></p>
+                <p class="h4"><?php echo $value; ?></p>
                     
                 <?php
                     endwhile; 

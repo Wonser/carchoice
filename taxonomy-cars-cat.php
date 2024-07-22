@@ -13,6 +13,7 @@ get_header();
         </div>
         <h1 class="h1"><?php the_field('auto-hero-title', 'option'); ?></h1>
         <p class="medium-l"><?php the_field('auto-hero-desc', 'option'); ?></p>
+        <?php echo do_shortcode('[contact-form-7 id="1fb3efb" title="Оставить заявку Новая"]'); ?>
     </div>
 </section>
 
