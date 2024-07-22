@@ -130,9 +130,9 @@
 				<?php $logo = get_field('logo', 'option'); ?>
 				<img src="<?php echo $logo['url']; ?>" alt="carchoice.club" class="svg">
 			</a>
-			<a href="tel:<?php the_field('phone', 'option'); ?>" class="phone semibold-m">
-				<img src="<?php echo get_template_directory_uri(); ?>/assets/img/call.svg" alt="call" class="svg">
-			</a>
+			<div class="mode-toggle">
+				<div class="mode-toggle-handle"></div>
+			</div>
 			<div class="menu-btn arcticmodal-close">
 				<img src="<?php echo get_template_directory_uri(); ?>/assets/img/cross.svg" alt="close" class="svg">
 			</div>
@@ -145,12 +145,6 @@
 				'container'      => '',
 			));
 		?>
-		<div class="mode-wrap">			
-			<div class="mode-toggle">
-				<div class="mode-toggle-handle"></div>
-			</div>
-			<span class="medium-xs">Тёмный режим</span>
-		</div>
 		<a href="tel:<?php the_field('phone', 'option'); ?>" class="h2 phone">
 			<?php the_field('phone', 'option'); ?>
 		</a>

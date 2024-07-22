@@ -105,7 +105,7 @@ get_header();
             <a href="<?php the_permalink(); ?>"><img src="<?php echo $card['img']['sizes']['large']; ?>" alt="photo"></a>
             <p class="h5"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></p>
             <?php /* ?><p class="regular-m"><?php echo $card['year']; ?></p><?php */ ?>
-            <p class="medium-s">Цена подбора <span class="semibold-s"><?php echo $card['price']; ?></span></p>
+            <p class="medium-s">Цена подбора <span class="semibold-s"><?php echo substr($card['model'], 24); ?></span></p>
             <div class="catalog-list-item-btns">
                 <div class="primary-btn semibold-s call-btn" data-text="<?php the_title(); ?>">Заказать подбор</div>
                 <a href="<?php the_permalink(); ?>" class="secondary-btn semibold-s">Подробнее</a>

@@ -14,11 +14,11 @@
                 <img src="<?php echo $img['url']; ?>" alt="bg" class="bg">
                 <img src="<?php echo $icon['url']; ?>" alt="">
                 <p class="h3"><?php echo $title; ?></p>
-                <? if(!$link):?>
+                <?php if(!$link): ?>
                     <div class="secondary-btn semibold-s">Оставить заявку</div>
-                <? else:?>
-                    <a href="<?=$link ?>" class="secondary-btn semibold-s">Подробнее</a>
-                <?endif;?>
+                <?php else: ?>
+                    <a href="<?php echo $link; ?>" class="secondary-btn semibold-s">Подробнее</a>
+                <?php endif; ?>
             </div>
                     
             <?php

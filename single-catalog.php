@@ -169,6 +169,12 @@ if(has_post_parent()) :
             <div class="auto-list swiper">
                 <div class="swiper-wrapper">
                     <?php
+
+                        $pageTitle = get_the_title();
+
+                        if(has_post_parent()) {
+                            $pageTitle = get_the_title( $post->post_parent );
+                        }
                     
                         $loop = new WP_Query( array(
                             'post_type' => 'cars',
@@ -177,7 +183,7 @@ if(has_post_parent()) :
                                 array(
                                     'taxonomy' => 'cars-cat',
                                     'field' => 'slug',
-                                    'terms' => get_the_title(),
+                                    'terms' =>  $pageTitle,
                                 ),
                             ),
                         ));
@@ -208,7 +214,7 @@ if(has_post_parent()) :
                                     <img src="<?php echo $card['img']['url']; ?>" alt="photo">
                                 </a> 
                                 <div class="auto-list-item-inner">
-                                    <p class="h3"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></p>
+                                    <p class="h4"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></p>
                                     <p class="medium-s date"><?php echo $card['date']; ?></p>
                                     <?php if($card['service']) : ?>
                                         <p class="medium-s service"><?php echo $card['service']; ?></p>
@@ -227,7 +233,7 @@ if(has_post_parent()) :
                                     </div>
                                     <p class="medium-m"><?php echo $card['check']; ?></p>
                                     <p class="regular-s">Стоимость автомобиля</p>
-                                    <p class="h3 price"><?php echo $card['price']; ?></p>
+                                    <p class="h4 price"><?php echo $card['price']; ?></p>
                                     <div class="auto-list-item-btns">
                                         <div class="primary-btn semibold-s call-btn" data-text="<?php the_title(); ?>">Хочу такой же</div>
                                         <a href="<?php the_permalink(); ?>" class="secondary-btn semibold-s">Смотреть отчет</a>
