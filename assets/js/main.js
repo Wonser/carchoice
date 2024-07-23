@@ -205,7 +205,6 @@ jQuery(document).ready(function($) {
   var defendSwiper = new Swiper(".defend-swiper", {
     slidesPerView: 1,
     spaceBetween: 6,
-    autoHeight: true,
     navigation: {
       nextEl: '.defend .swiper-button-next',
       prevEl: '.defend .swiper-button-prev',
@@ -215,7 +214,6 @@ jQuery(document).ready(function($) {
   var stepsSwiper = new Swiper(".steps-swiper", {
     slidesPerView: 1,
     spaceBetween: 6,
-    autoHeight: true,
     navigation: {
       nextEl: '.steps .swiper-button-next',
       prevEl: '.steps .swiper-button-prev',
@@ -225,7 +223,6 @@ jQuery(document).ready(function($) {
   var tabsSwiper = new Swiper(".guarantee-tabs-item.active .tabs-swiper", {
     slidesPerView: 1,
     spaceBetween: 6,
-    autoHeight: true,
     navigation: {
       nextEl: '.guarantee-tabs-item.active .swiper-button-next',
       prevEl: '.guarantee-tabs-item.active .swiper-button-prev',
@@ -379,7 +376,6 @@ jQuery(document).ready(function($) {
     var tabsSwiper = new Swiper(".guarantee-tabs-item.active .tabs-swiper", {
       slidesPerView: 1,
       spaceBetween: 6,
-      autoHeight: true,
       navigation: {
         nextEl: '.guarantee-tabs-item.active .swiper-button-next',
         prevEl: '.guarantee-tabs-item.active .swiper-button-prev',

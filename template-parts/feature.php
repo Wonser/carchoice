@@ -18,5 +18,26 @@
             wp_reset_postdata();
         ?>
     </div>
+    <div class="swiper about-swiper">
+        <div class="swiper-wrapper">
+            <?php 
+                while( have_rows('list') ): the_row(); 
+                    $title = get_sub_field('title');
+                    $desc = get_sub_field('desc');
+            ?>
+
+            <div class="swiper-slide about-list-item partners-list-item">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/check.svg" alt="icon">
+                <p class="h5"><?php echo $title; ?></p>
+                <p class="regular-m"><?php echo $desc; ?></p>
+            </div>
+                    
+            <?php
+                endwhile; 
+                wp_reset_postdata();
+            ?>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
     <div class="primary-btn call-btn semibold-s" data-text="Оставить заявку">Оставить заявку</div>
 </section>
