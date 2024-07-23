@@ -2425,6 +2425,7 @@
    
          .auto-list-item-inner {
            height: 100%;
+           width: 100%;
          }
    
          .auto-list-item-btns {
@@ -3425,7 +3426,7 @@
        max-width: calc(100% - 7px);
 
        strong {
-        margin-bottom: 36px;
+        margin-bottom: 18px;
         display: flex;
        }
 
@@ -3520,6 +3521,14 @@
          border: 1px solid var(--border-colorSecondary);
          background: var(--bg-colorPrimary);
          padding: 48px;
+
+         
+
+        h2,
+        h3,
+        h4 {
+          margin-bottom: 36px;
+        }
    
          p:not([class]) {
            line-height: 24px;
@@ -8205,29 +8214,29 @@
                }
              }
              
-             &.menu-item-601 {
-               li {
-                 &:nth-child(8) ~ li {
-                   pointer-events: none;
+            //  &.menu-item-601 {
+            //    li {
+            //      &:nth-child(8) ~ li {
+            //        pointer-events: none;
    
-                   a {
-                     display: flex;
-                     align-items: center;
-                     color: var(--text-colorSecondary);
+            //        a {
+            //          display: flex;
+            //          align-items: center;
+            //          color: var(--text-colorSecondary);
    
-                     &::before {
-                       content: "Скоро";
-                       margin-right: 10px;
-                       padding: 3px 6px;
-                       background: var(--bg-primary);
-                       color: #1A1B1D;
-                       font: inherit;
-                       border-radius: 32px;
-                     }
-                   }
-                 }
-               }
-             }
+            //          &::before {
+            //            content: "Скоро";
+            //            margin-right: 10px;
+            //            padding: 3px 6px;
+            //            background: var(--bg-primary);
+            //            color: #1A1B1D;
+            //            font: inherit;
+            //            border-radius: 32px;
+            //          }
+            //        }
+            //      }
+            //    }
+            //  }
            }
          }
    
