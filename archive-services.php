@@ -6,11 +6,7 @@ get_header();
 <?php $img = get_field('services-bg', 'option') ?>
 <section class="hero hero-small" style="background: url(<?php echo $img['url']; ?>) no-repeat center / cover;">
     <div class="hero-inner">
-        <div class="breadcrumbs">
-            <a href="<?php echo get_home_url(); ?>">Подбор авто</a>
-            <span class="separator"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/dropdown.svg" alt="icon" class="svg"></span>
-            <span class="breadcrumbs-item"><?php the_field('services-title', 'option'); ?></span>
-        </div>
+        <?get_template_part('/template-parts/breadcrumbs');?>
         <h1 class="h1"><?php the_field('services-title', 'option'); ?></h1>
         <p class="medium-l"><?php the_field('services-desc', 'option'); ?></p>
         <?php echo do_shortcode('[contact-form-7 id="1fb3efb" title="Оставить заявку Новая"]'); ?>
@@ -26,7 +22,7 @@ get_header();
             <div class="swiper-wrapper">
                 <?php $images = get_field('hero-gallery', 13); foreach( $images as $image ): ?>
                     <div class="swiper-slide">
-                        <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
+                        <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['titile']); ?>" title="<?php echo esc_attr($image['titile']); ?>"/>
                     </div>
                 <?php endforeach; ?>
             </div>
@@ -69,18 +65,25 @@ get_header();
                         foreach($card['list'] as $item) :
                     ?>
                         <div class="services-list-item-list-item">
-                            <img src="<?php echo $item['icon']['url']; ?>" alt="icon">
+                            <img src="<?php echo $item['icon']['url']; ?>" alt="icon" title="icon">
                             <span class="medium-m"><?php echo $item['text']; ?></span>
                         </div>
                     <?php endforeach; ?>
                 </div>
             <?php endif; ?>
             <a href="<?php echo $link; ?>">
-                <img src="<?php echo $card['img']['url']; ?>" alt="photo" class="desk">
-                <img src="<?php echo $card['img-mobile']['url']; ?>" alt="photo" class="mobile">
+                <img src="<?php echo $card['img']['sizes']['services_thumbnail']; ?>" alt="<?php the_title(); ?>" title="<?php the_title(); ?>" class="desk">
+                <img src="<?php echo $card['img-mobile']['url']; ?>" alt="<?php the_title(); ?>" title="<?php the_title(); ?>" class="mobile">
             </a>
             <?php if($card['price']) : ?>
-                <p class="<?php echo $class; ?> price"><?php echo $card['price']; ?></p>
+                <p class="<?php echo $class; ?> price">
+                    <?php if($card['sale']) : ?>
+                        <span class="old-price"><?php echo $card['price']; ?></span>
+                        <span class="sale-price semibold-l"><?php echo $card['sale']; ?></span>
+                    <?php else : ?>
+                        <?php echo $card['price']; ?> 
+                    <?php endif; ?>
+                </p>
             <?php else : ?>
                 <p class="<?php echo $class; ?> price gray">по договоренности</p>
             <?php endif; ?>
@@ -90,7 +93,7 @@ get_header();
                 <?php if($card['off']) : ?>
                     <div class="secondary-btn disabled">
                         <span class="semibold-s">Скоро</span>
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/lock.svg" alt="icon" class="svg">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/lock.svg" alt="icon" title="icon" class="svg">
                     </div>
                 <?php else : ?>
                     <a href="<?php echo $link; ?>" class="secondary-btn semibold-s">Подробнее</a>
@@ -116,7 +119,7 @@ get_header();
         ?>
 
         <div class="about-list-item partners-list-item">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/check.svg" alt="icon">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/check.svg" alt="icon" title="icon">
             <p class="h5"><?php echo $title; ?></p>
             <p class="regular-m"><?php echo $desc; ?></p>
         </div>
@@ -126,6 +129,7 @@ get_header();
             wp_reset_postdata();
         ?>
     </div>
+
     <div class="swiper about-swiper">
         <div class="swiper-wrapper">
             <?php 

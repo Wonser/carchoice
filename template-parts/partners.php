@@ -7,7 +7,7 @@
         ?>
                     
             <div class="brand-list-item">
-                <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
+                <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['title']); ?>" title="<?php echo esc_attr($image['title']); ?>" />
             </div>
 
         <?php endforeach; ?>

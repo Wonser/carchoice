@@ -9,6 +9,98 @@
  * @package carchoice
  */
 ?>
+<div class="bottom-fixed">
+	<?php if($_COOKIE['fixed'] == "true") : ?>
+		<div class="bottom-fixed-list disabled">
+	<?php  else : ?>
+		<div class="bottom-fixed-list">
+	<?php endif; ?>
+		<div class="swiper">
+			<div class="swiper-wrapper">
+				<?php 
+					while( have_rows('random-list', 'option') ): the_row(); 
+						$img = get_sub_field('img');
+						$text = get_sub_field('text');
+						$link = get_sub_field('link');
+				?>
+
+				<a href="<?php echo $link; ?>" class="bottom-fixed-list-item swiper-slide">
+					<img src="<?php echo $img['url']; ?>" alt="<?php echo explode(",", $text)[0]; ?>" title="<?php echo $text; ?>">
+					<div class="bottom-fixed-list-item-inner">
+						<span class="semibold-xs">Подобрали недавно</span>
+						<p class="medium-s"><?php echo $text; ?></p>
+					</div>
+				</a>
+						
+				<?php
+					endwhile; 
+					wp_reset_postdata();
+				?>
+			</div>
+		</div>
+		<div class="close">
+			<img src="<?php echo get_template_directory_uri(); ?>/assets/img/cross.svg" class="svg" alt="close" title="close">
+		</div>
+	</div>
+	<div class="bottom-fixed-socials">
+		<?php 
+			$i = 0;
+			$text = array("Телеграм", "Whatsapp", "ВКонтакте", "Youtube");
+			$text2 = array("1K", "1.4K", "1.4K");
+			$link = array(get_field('fixed-tg', 'option'), get_field('fixed-vk', 'option'), get_field('fixed-vk', 'option'));
+			while( have_rows('socials', 'option') ): the_row(); 
+				$icon = get_sub_field('icon');
+		?>
+
+		<a href="<?php echo $link[$i]; ?>" class="socials-item" target="blank">
+			<img src="<?php echo $icon['url']; ?>" alt="icon" title="icon" class="svg">
+			<p class="semibold-s"><?php echo $text[$i]; ?><span><?php echo $text2[$i]; ?></span></p>
+		</a>
+				
+		<?php
+			$i++;
+			endwhile; 
+			wp_reset_postdata();
+		?>
+		<div class="main-btn call-btn semibold-s" data-text="Заявка на консультацию">Заявка на консультацию</div>
+		<a href="tel:<?php the_field('phone', 'option'); ?>" class="main-btn semibold-s phone-btn"><?php the_field('phone', 'option'); ?></a>
+	</div>
+	<div class="bottom-fixed-img">
+		<?php $img = get_field('fixed-img', 'option'); ?>
+		<img src="<?php echo $img['url']; ?>" alt="Кирилл Белов" title="Кирилл Белов">
+	</div>
+	<div class="call-form">	
+		<div class="close">
+			<img src="<?php echo get_template_directory_uri(); ?>/assets/img/cross.svg" class="svg" alt="cross">
+		</div>
+		<img src="<?php echo $img['url']; ?>" alt="Кирилл Белов" title="Позвоните нашему эксперту для консультации">
+		<p class="h4">Кирилл Белов</p>
+		<p class="regular-m">Позвоните нашему эксперту для консультации</p>
+		<a href="tel:<?php the_field('phone', 'option'); ?>" class="phone h4">
+			<?php the_field('phone', 'option'); ?>
+		</a>
+		<div class="socials">
+			<?php
+				while( have_rows('socials', 'option') ): the_row(); 
+					$link = get_sub_field('link');
+					$icon = get_sub_field('icon');
+			?>
+
+			<a href="<?php echo $link; ?>" class="socials-item" target="blank">
+				<img src="<?php echo $icon['url']; ?>" alt="icon" class="svg">
+			</a>
+					
+			<?php
+				endwhile; 
+				wp_reset_postdata();
+			?>
+		</div>
+		<div class="main-btn call-btn semibold-s" data-text="Заказать звонок">Заказать звонок</div>
+	</div>
+</div>
+
+<div class="cursor"></div>
+
 	<footer class="footer">
 		<div class="footer-top">
 			<div class="footer-top-left">
@@ -34,7 +126,7 @@
 					?>
 
 					<a href="<?php echo $link; ?>" class="socials-item">
-						<img src="<?php echo $icon['url']; ?>" alt="icon" class="svg">
+						<img src="<?php echo $icon['url']; ?>" alt="icon" title="icon" class="svg">
 						<p class="semibold-l"><?php echo $text[$i]; ?></p>
 					</a>
 							
@@ -50,7 +142,7 @@
 		<div class="footer-middle">
 			<div class="footer-middle-left">
 				<?php $qr = get_field('qrcode', 'option'); ?>
-				<img src="<?php echo $qr['url']; ?>" alt="qr">
+				<img src="<?php echo $qr['url']; ?>" alt="qr" title="qr">
 			</div>
 			<div class="footer-middle-right">
 				<?php
@@ -71,7 +163,7 @@
 				?>
 				<div class="scroll-up">
 					<div class="scroll-up-icon">
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/img/dropdown.svg" alt="icon" class="svg">
+						<img src="<?php echo get_template_directory_uri(); ?>/assets/img/dropdown.svg" alt="icon" title="icon" class="svg">
 					</div>
 					<p class="regular-s">Наверх</p>
 				</div>
@@ -80,11 +172,11 @@
 		<div class="footer-bottom">
 			<div class="footer-bottom-inner">
 				<p class="regular-s">© 2024 Carchoice.Club. Все права защищены.</p>
-				<a href="#" class="semibold-s">Политика конфиденциальности</a>
-				<p class="regular-s">Разработка сайта – <a href="https://t.me/arts_man" target="blank" class="semibold-s">Artsman</a></p>
+				<a href="/privacy-policy/" class="semibold-s">Политика конфиденциальности</a>
+				<p class="regular-s">Разработка сайта – <a href="https://t.me/arts_man" rel="nofollow" target="blank" class="semibold-s">Artsman</a></p>
 			</div>
 			<?php $img = get_field('logo-footer', 'option'); ?>
-			<img src="<?php echo $img['url']; ?>" alt="logo" class="svg">
+			<img src="<?php echo $img['url']; ?>" alt="logo" title="logo" class="svg">
 		</div>
 	</footer>
 
@@ -97,7 +189,7 @@
 		<div class="overlay arcticmodal-close"></div>
 		<div class="box-modal-call form-wrap">
 			<div class="box-modal_close arcticmodal-close">
-				<img src="<?php echo get_template_directory_uri(); ?>/assets/img/cross.svg" alt="close" class="svg">
+				<img src="<?php echo get_template_directory_uri(); ?>/assets/img/cross.svg" alt="close" title="close" class="svg">
 			</div>
 			<?php echo do_shortcode('[contact-form-7 id="09806f7" title="Заказать звонок"]'); ?>
 			<div class="socials">
@@ -110,7 +202,7 @@
 				?>
 
 				<a href="<?php echo $link; ?>" class="socials-item" target="blank">
-					<img src="<?php echo $icon['url']; ?>" alt="icon" class="svg">
+					<img src="<?php echo $icon['url']; ?>" alt="icon" title="icon" class="svg">
 					<p class="semibold-s"><?php echo $text[$i]; ?></p>
 				</a>
 						
@@ -128,23 +220,24 @@
 		<div class="menu-modal-head">
 			<a href="<?php echo get_home_url(); ?>" class="logo">
 				<?php $logo = get_field('logo', 'option'); ?>
-				<img src="<?php echo $logo['url']; ?>" alt="carchoice.club" class="svg">
+				<img src="<?php echo $logo['url']; ?>" alt="carchoice.club" title="carchoice.club" class="svg">
 			</a>
 			<div class="mode-toggle">
 				<div class="mode-toggle-handle"></div>
 			</div>
 			<div class="menu-btn arcticmodal-close">
-				<img src="<?php echo get_template_directory_uri(); ?>/assets/img/cross.svg" alt="close" class="svg">
+				<img src="<?php echo get_template_directory_uri(); ?>/assets/img/cross.svg" alt="close" title="close" class="svg">
 			</div>
 		</div>
 		<?php
 			wp_nav_menu(array(
 				'menu_id'        => 'modal-menu',
-				'menu_class'     => 'modal-menu medium-s',
+				'menu_class'     => 'modal-menu medium-l',
 				'theme_location' => 'modal-menu',
 				'container'      => '',
 			));
 		?>
+		
 		<a href="tel:<?php the_field('phone', 'option'); ?>" class="h2 phone">
 			<?php the_field('phone', 'option'); ?>
 		</a>
@@ -156,7 +249,7 @@
 			?>
 
 			<a href="<?php echo $link; ?>" class="socials-item" target="blank">
-				<img src="<?php echo $icon['url']; ?>" alt="icon" class="svg">
+				<img src="<?php echo $icon['url']; ?>" alt="icon" alt="title" class="svg">
 			</a>
 					
 			<?php
@@ -172,7 +265,12 @@
 	</div>
 </div>
 
-
+<style>
+	.breadcrumbs-item {
+		display: flex;
+		align-items: center;
+	}
+</style>
 
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript" >

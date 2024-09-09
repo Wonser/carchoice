@@ -3,11 +3,11 @@
     <p class="h2"><?php the_field('geo-title', 13); ?></p>
     <p class="regular-m geo-subtitle"><?php the_field('geo-desc', 13); ?></p>
     <div class="geo-img">
-        <img src="<?php echo $img['url']; ?>" alt="map" class="geo-img-car">
-        <img src="<?php echo $map['url']; ?>" alt="map" class="geo-img-map svg">
+        <img src="<?php echo $img['sizes']['geo_thumbnail']; ?>" alt="cars" title="cars" class="geo-img-car">
+        <img src="<?php echo $map['url']; ?>" alt="map" title="map" class="geo-img-map svg">
     </div>
     <div class="geo-map">
-        <img src="<?php echo $city['url']; ?>" alt="map" class="geo-map-city svg">
+        <img src="<?php echo $city['url']; ?>" alt="<?php echo $city['name']; ?>" class="geo-map-city svg">
     </div>
     <div class="geo-list">
         <?php 

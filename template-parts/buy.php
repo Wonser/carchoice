@@ -11,7 +11,7 @@
             ?>
 
             <div class="swiper-slide">
-                <img src="<?php echo $img['url']; ?>" alt="">
+                <img src="<?php echo $img['url']; ?>" alt="<?php echo $title; ?>" title="<?php echo $title; ?>">
                 <div class="swiper-slide-inner">
                     <div class="semibold-s"><?php echo $i; ?></div>
                     <p class="h3"><?php echo $title; ?></p>
@@ -27,10 +27,10 @@
         </div>
         <div class="swiper-nav">
             <div class="swiper-button-prev">
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/dropdown.svg" alt="arrow" class="svg">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/dropdown.svg" alt="arrow" title="arrow" class="svg">
             </div>
             <div class="swiper-button-next">
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/dropdown.svg" alt="arrow" class="svg">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/dropdown.svg" alt="arrow" title="arrow" class="svg">
             </div>
         </div>
     </div>

@@ -1,7 +1,9 @@
 <section class="review">
     <p class="h2"><?php the_field('review-title', 13); ?></p>
-    <?php $img = get_field('review-img', 13); ?>
-    <img src="<?php echo $img['url']; ?>" alt="review" class="svg">
+
+    <div style="margin-bottom: 20px;">
+        <iframe src="https://yandex.ru/sprav/widget/rating-badge/80106001971?type=rating&theme=light" width="150" height="50" frameborder="0"></iframe>
+    </div>
     <div class="review-swiper swiper">
         <div class="swiper-wrapper">
             <?php 
@@ -23,22 +25,22 @@
                     }
             ?>
 
-            <div class="swiper-slide">
+            <div class="swiper-slide" itemscope itemtype="http://schema.org/Review">
                 <div class="swiper-slide-inner">
                     <div class="avatar" style="background: <?php echo $avatarbg; ?>;">
                         <p class="h4" style="color: <?php echo $avatartext; ?>"><?php echo mb_substr($name, 0, 1); ?></p>
                         <?php if($avatar) : ?>
-                            <img src="<?php echo $avatar['sizes']['medium']; ?>" alt="avatar">
+                            <img src="<?php echo $avatar['sizes']['thumbnail_85']; ?>" alt="<?php echo $name; ?>" title="<?php echo $name; ?>">
                         <?php endif; ?>
                     </div>
                     <div class="name">
-                        <p class="h5"><?php echo $name; ?></p>
-                        <p class="regular-s"><?php echo $date; ?></p>
+                        <p class="h5" itemprop="author"><?php echo $name; ?></p>
+                        <p class="regular-s"><time><?php echo $date; ?></time></p>
                     </div>
                 </div>
-                <p class="regular-m"><?php echo $text; ?></p>
+                <p class="regular-m" itemprop="reviewBody"><?php echo $text; ?></p>
                 <?php if($link) : ?>
-                    <a href="<?php echo $link; ?>" class="secondary-btn semibold-s">Читать полный отзыв</a>
+                    <a href="<?php echo $link; ?>" class="secondary-btn semibold-s" itemprop="url">Читать полный отзыв</a>
                 <?php endif; ?>
             </div>
                     
@@ -50,10 +52,10 @@
         <div class="swiper-scrollbar"></div>
         <div class="swiper-nav">
             <div class="swiper-button-prev">
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/dropdown.svg" alt="arrow" class="svg">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/dropdown.svg" alt="arrow" title="arrow" class="svg">
             </div>
             <div class="swiper-button-next">
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/dropdown.svg" alt="arrow" class="svg">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/dropdown.svg" alt="arrow" title="arrow" class="svg">
             </div>
         </div>
     </div>

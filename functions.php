@@ -1,4 +1,5 @@
 <?php
+// require_once('include/Yoast.php');
 
 ## Отключает Гутенберг (новый редактор блоков в WordPress).
 ## ver: 1.2
@@ -95,6 +96,7 @@ endif;
 add_action( 'after_setup_theme', 'carchoice_setup' );
 
 
+add_rewrite_rule( 'privacy-policy/?$', 'index.php?pagename=privacy-policy', 'top' );
 add_rewrite_rule( 'thanks/?$', 'index.php?pagename=thanks', 'top' );
 add_rewrite_rule( 'informacziya-dlya-lizing-menedzherov/?$', 'index.php?pagename=informacziya-dlya-lizing-menedzherov', 'top' );
 add_rewrite_rule( 'partnerskaya-programma/?$', 'index.php?pagename=partnerskaya-programma', 'top' );
@@ -159,7 +161,7 @@ if (function_exists('acf_add_options_page')) {
 
 
 
-add_image_size( 'catalog_thumbnail', 395, 300, true );
+add_image_size( 'catalog_thumbnail', 455, 340, true );
 add_image_size( 'content_thumbnail', 800, 535, true );
 add_image_size( 'test_thumbnail', 680, 560, true );
 add_image_size( 'cars_thumbnail', 850, 600, true );
@@ -374,3 +376,34 @@ function nav_menu_schema($content) {
 	return $content;
 }
 add_filter('wp_nav_menu', 'nav_menu_schema');
+
+
+
+function add_canonical_link() {
+	if (is_post_type_archive('services')) {
+		echo '<link rel="canonical" href="' . get_post_type_archive_link('services') . '" />';
+	}
+	if (is_post_type_archive('catalog')) {
+		echo '<link rel="canonical" href="' . get_post_type_archive_link('catalog') . '" />';
+	}
+	if (is_post_type_archive('cars')) {
+		echo '<link rel="canonical" href="' . get_post_type_archive_link('cars') . '" />';
+	}
+}
+add_action('wp_head', 'add_canonical_link');
+
+
+function disable_pagination_on_services_page( $query ) {
+	if ( is_post_type_archive( 'services' ) && !is_admin() && $query->is_main_query() ) {
+		$query->set( 'nopaging', true );
+	}
+	if ( is_post_type_archive( 'catalog' ) && !is_admin() && $query->is_main_query() ) {
+		$query->set( 'nopaging', true );
+	}
+
+	if ( is_post_type_archive( 'cars' ) && !is_admin() && $query->is_main_query() ) {
+		$query->set( 'nopaging', true );
+	}
+
+}
+add_action( 'pre_get_posts', 'disable_pagination_on_services_page' );

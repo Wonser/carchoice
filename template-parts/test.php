@@ -10,7 +10,7 @@ while ( have_rows('section', 13) ) : the_row();
     <p class="h2"><?php the_sub_field('title'); ?></p>
     <div class="test-inner">
         <?php $img = get_sub_field('img'); ?>
-        <img src="<?php echo $img['url']; ?>" alt="img">
+        <img src="<?php echo $img['sizes']['test_thumbnail']; ?>" alt="<?php the_sub_field('title'); ?>" title="<?php the_sub_field('title'); ?>">
         <div class="test-inner-left">
             <?php 
                 $i = 1;
@@ -29,7 +29,7 @@ while ( have_rows('section', 13) ) : the_row();
                         $text = get_sub_field('text');
                     ?>
 
-                    <p class="regular-m"><?php echo $text; ?></p>
+                        <p class="regular-m"><?php echo $text; ?></p>
                         
                     <?php
                         endwhile; 
@@ -99,7 +99,7 @@ else :
     <p class="h2"><?php the_sub_field('title'); ?></p>
     <div class="test-inner">
         <?php $img = get_sub_field('img'); ?>
-        <img src="<?php echo $img['url']; ?>" alt="img">
+        <img src="<?php echo $img['sizes']['test_thumbnail']; ?>" alt="<?php the_sub_field('title'); ?>" title="<?php the_sub_field('title'); ?>">
         <div class="test-inner-left">
             <?php 
                 $i = 1;

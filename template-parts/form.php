@@ -13,7 +13,7 @@
 			?>
 
 			<a href="<?php echo $link; ?>" class="socials-item" target="blank">
-				<img src="<?php echo $icon['url']; ?>" alt="icon" class="svg">
+				<img src="<?php echo $icon['url']; ?>" alt="icon" title="icon" class="svg">
                 <p class="semibold-s"><?php echo $text[$i]; ?></p>
 			</a>
 					

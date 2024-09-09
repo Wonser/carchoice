@@ -6,11 +6,7 @@ get_header();
 <?php $img = get_field('catalog-bg', 'option') ?>
 <section class="hero hero-small" style="background: url(<?php echo $img['url']; ?>) no-repeat center / cover;">
     <div class="hero-inner">
-        <div class="breadcrumbs">
-            <a href="<?php echo get_home_url(); ?>">Подбор авто</a>
-            <span class="separator"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/dropdown.svg" alt="icon" class="svg"></span>
-            <span class="breadcrumbs-item"><?php the_field('catalog-title', 'option'); ?></span>
-        </div>
+        <?get_template_part('/template-parts/breadcrumb');?>
         <h1 class="h1"><?php the_field('catalog-title', 'option'); ?></h1>
         <p class="medium-l"><?php the_field('catalog-desc', 'option'); ?></p>
         <?php echo do_shortcode('[contact-form-7 id="1fb3efb" title="Оставить заявку Новая"]'); ?>
@@ -52,12 +48,12 @@ get_header();
         </div>
         <div class="swiper-button-prev">
             <div class="swiper-button-inner">
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/dropdown.svg" alt="arrow" class="svg">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/dropdown.svg" alt="arrow" title="arrow" class="svg">
             </div>
         </div>
         <div class="swiper-button-next">
             <div class="swiper-button-inner">
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/dropdown.svg" alt="arrow" class="svg">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/dropdown.svg" alt="arrow" title="arrow" class="svg">
             </div>
         </div>
     </div>
@@ -85,7 +81,7 @@ get_header();
     ?>
         <div class="show-item">
             <div class="catalog-list-item">
-                <a href="<?php the_permalink(); ?>"><img src="<?php echo $card['img']['url']; ?>" alt="photo"></a>
+                <a href="<?php the_permalink(); ?>"><img src="<?php echo $card['img']['sizes']['catalog_thumbnail']; ?>" alt="<?php the_title(); ?>" title="<?php the_title(); ?>"></a>
                 <p class="h5"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></p>
                 <?php /* ?><p class="regular-m"><?php echo $card['year']; ?></p><?php */ ?>
                 <p class="medium-s">Цена подбора <span class="semibold-s"><?php echo substr($card['model'], 24); ?></span></p>
@@ -105,7 +101,7 @@ get_header();
         <div class="section-link">
             <p class="semibold-m">Показать еще</p>
             <div class="section-link-icon">
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/dropdown.svg" alt="icon" class="svg">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/dropdown.svg" alt="icon"title="icon" class="svg">
             </div>
         </div>
     </div>

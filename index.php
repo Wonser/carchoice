@@ -5,11 +5,7 @@ get_header();
 
 <section class="news news-wrap">
     <div class="news-left">
-        <div class="breadcrumbs">
-            <a href="<?php echo get_home_url(); ?>">Подбор авто</a>
-            <span class="separator"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/dropdown.svg" alt="icon" class="svg"></span>
-            <span class="breadcrumbs-item">Блог</span>
-        </div>
+        <?php get_template_part('/template-parts/breadcrumb');?>
         <p class="h1">Блог</p>
         <div class="news-category">
             <a href="/blog" class="news-category-item semibold-s active">
@@ -32,7 +28,7 @@ get_header();
             ?>
         </div>
     </div>
-    <div class="news-main">
+    <div class="news-main" itemscope itemtype="http://schema.org/Blog">
         <div class="news-main-list show" data-show="8" data-count="4">
             <?php
                 $loop = new WP_Query( array(
@@ -40,23 +36,26 @@ get_header();
                     'posts_per_page' => -1,
                 ));
         
-        
                 while($loop->have_posts()) : $loop->the_post();
-
+                
                 $card = get_field('card');
+                $publish_date = get_the_date('c'); 
             ?>
-            <div class="show-item">
+            <article itemprop="blogPosts" itemscope itemtype="http://schema.org/BlogPosting">
                 <a href="<?php the_permalink(); ?>" class="news-main-list-item">
-                    <div class="news-main-list-item-img news-list-item-img"><img src="<?php echo $card['img']['url']; ?>" alt="photo"></div>
+                    <div class="news-main-list-item-img news-list-item-img">
+                        <img itemprop="image" src="<?php echo $card['img']['sizes']['blog_thumbnail']; ?>" alt="<?php the_title(); ?>" title="<?php the_title(); ?>">
+                    </div>
                     <div class="news-main-list-item-inner news-list-item-inner">
-                        <p class="medium-s"><?php echo get_the_date(); ?></p>
-                        <p class="h5"><?php the_title(); ?></p>
-                        <p class="regular-m"><?php echo $card['desc']; ?></p>
+                        <p class="medium-s" itemprop="datePublished" datetime="<?php echo $publish_date; ?>"><?php echo get_the_date(); ?></p>
+                        <p class="h5" itemprop="headline"><?php the_title(); ?></p>
+                        <p class="regular-m" itemprop="description"><?php echo $card['desc']; ?></p>
                         <div class="secondary-btn semibold-s">Подробнее</div>
                     </div>
                 </a>
-            </div>
-
+                <meta itemprop="dateModified" content="<?php echo $publish_date; ?>">
+                <meta itemprop="mainEntityOfPage" itemType="https://schema.org/WebPage" itemid="<?php the_permalink(); ?>"/>
+            </article>
             <?php 
                 endwhile;
                 wp_reset_postdata();
@@ -66,7 +65,7 @@ get_header();
             <div class="section-link">
                 <p class="semibold-m">Показать еще</p>
                 <div class="section-link-icon">
-                    <img src="<?php echo get_template_directory_uri(); ?>/assets/img/dropdown.svg" alt="icon" class="svg">
+                    <img src="<?php echo get_template_directory_uri(); ?>/assets/img/dropdown.svg" alt="icon" title="icon" class="svg">
                 </div>
             </div>
         </div>
@@ -74,7 +73,7 @@ get_header();
     <div class="news-right">
         <div class="news-right-inner">
             <?php $img = get_field('news-avatar', 'option'); ?>
-            <img src="<?php echo $img['url']; ?>" alt="">
+            <img src="<?php echo $img['url']; ?>" alt="user">
             <?php echo do_shortcode('[contact-form-7 id="c9e1db9" title="Оставить заявку (Блог)"]'); ?>
         </div>
     </div>

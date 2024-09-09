@@ -7,18 +7,14 @@ get_header();
     <section class="about-hero">
         <?php $img = get_field('hero-img'); ?>
         <div class="about-hero-left" style="background: url(<?php echo $img['url']; ?>) no-repeat center / cover;">
-            <div class="breadcrumbs">
-                <a href="<?php echo get_home_url(); ?>">Подбор авто</a>
-                <span class="separator"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/dropdown.svg" alt="icon" class="svg"></span>
-                <span class="breadcrumbs-item">О компании</span>
-            </div>
+            <?get_template_part('/template-parts/breadcrumb');?>
             <h1 class="h1"><?php the_title(); ?></h1>
             <p class="medium-l"><?php the_field('hero-desc'); ?></p>
         </div>
         <div class="about-hero-right">
             <div class="about-hero-right-img">
-                <?php $img = get_field('hero-team'); ?>
-                <img src="<?php echo $img['url']; ?>" alt="team">
+            <?php $img = get_field('hero-team'); ?>
+            <img src="<?php echo $img['url']; ?>" alt="team">
             </div>
             <?php echo do_shortcode('[contact-form-7 id="c9e1db9" title="Оставить заявку (Блог)"]'); ?>
         </div>
@@ -28,8 +24,8 @@ get_header();
         <p class="h2"><?php the_field('main-title'); ?></p>
         <div class="about-main">
             <div class="about-main-img">
-                <?php $img = get_field('main-img'); ?>
-                <img src="<?php echo $img['url']; ?>" alt="team">
+                <?php $img = get_field('main-img'); ?> 
+                <img src="<?php echo $img['sizes']['thumbnail_500']; ?>" alt="team" team="team">
             </div>
             <div class="about-main-content">
                 <p class="h4"><?php the_field('main-name'); ?></p>
@@ -52,11 +48,7 @@ get_header();
     <?php $img = get_field('hero-img') ?>
     <section class="hero hero-small" style="background: url(<?php echo $img['url']; ?>) no-repeat center / cover;">
         <div class="hero-inner">
-            <div class="breadcrumbs">
-                <a href="<?php echo get_home_url(); ?>">Подбор авто</a>
-                <span class="separator"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/dropdown.svg" alt="icon" class="svg"></span>
-                <span class="breadcrumbs-item"><?php the_title(); ?></span>
-            </div>
+            <?get_template_part('/template-parts/breadcrumb');?>
             <h1 class="h1"><?php the_title(); ?></h1>
             <p class="medium-l"><?php the_field('hero-desc'); ?></p>
         </div>
@@ -84,7 +76,7 @@ get_header();
             ?>
         </div>
         <?php $img = get_field('program-img'); ?>
-        <img src="<?php echo $img['url']; ?>" alt="img">
+        <img src="<?php echo $img['size']['partner_thumbnail']; ?>" alt="img" title="img">
         <div class="program-list">
             <?php 
                 while( have_rows('program-list2') ): the_row(); 
@@ -111,7 +103,7 @@ get_header();
                     ?>
 
                     <a href="<?php echo get_field('fixed-tg', 'option'); ?>" class="socials-item">
-                        <img src="<?php echo $icon['url']; ?>" alt="icon" class="svg">
+                        <img src="<?php echo $icon['url']; ?>" alt="icon" title="icon" class="svg">
                         <p class="semibold-s">Подписаться</p>
                         <span class="semibold-s">1K</span>
                     </a>
@@ -138,11 +130,7 @@ get_header();
     <?php $img = get_field('hero-bg') ?>
     <section class="hero hero-small" style="background: url(<?php echo $img['url']; ?>) no-repeat center / cover;">
         <div class="hero-inner">
-            <div class="breadcrumbs">
-                <a href="<?php echo get_home_url(); ?>">Подбор авто</a>
-                <span class="separator"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/dropdown.svg" alt="icon" class="svg"></span>
-                <span class="breadcrumbs-item"><?php the_title(); ?></span>
-            </div>
+            <?get_template_part('/template-parts/breadcrumb');?>
             <h1 class="h1"><?php the_title(); ?></h1>
             <p class="medium-l"><?php the_field('hero-desc'); ?></p>
         </div>
@@ -151,7 +139,7 @@ get_header();
     <section class="content">
         <div class="content-left">
             <?php $img = get_field('content-img'); ?>
-            <img src="<?php echo $img['url']; ?>" alt="img">
+            <img src="<?php echo $img['sizes']['content_thumbnail']; ?>" alt="img" title="img">
         </div>
         <div class="content-right">
             <div class="regular-m">
@@ -171,7 +159,7 @@ get_header();
             ?>
 
             <div class="about-list-item partners-list-item">
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/check.svg" alt="icon">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/check.svg" alt="icon" title="img">
                 <p class="h5"><?php echo $title; ?></p>
                 <p class="regular-m"><?php echo $desc; ?></p>
             </div>
@@ -219,7 +207,7 @@ get_header();
             ?>
                 <div class="swiper-slide auto-list-item">
                     <a href="<?php the_permalink(); ?>" class="auto-list-item-img">
-                        <img src="<?php echo $card['img']['url']; ?>" alt="photo">
+                        <img src="<?php echo $card['img']['sizes']['auto_thumbnail']; ?>" alt="<?php the_title(); ?>" title="<?php the_title(); ?>">
                     </a>
                     
                     <div class="auto-list-item-inner">
@@ -257,7 +245,7 @@ get_header();
         <a href="/cars" class="section-link">
             <p class="semibold-m">Смотреть все подобранные авто</p>
             <div class="section-link-icon">
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/dropdown.svg" alt="icon" class="svg">
+                <img src="<?php echo get_template_directory_uri(); ?>/assets/img/dropdown.svg" alt="icon" title="icon" class="svg">
             </div>
         </a>
     </section>
@@ -270,11 +258,7 @@ get_header();
         <div class="hero-contacts-left">
             <?php $img = get_field('hero-img'); ?>
             <div class="hero-contacts-left-inner" style="background: url(<?php echo $img['url']; ?>) no-repeat center / cover;">
-                <div class="breadcrumbs">
-                    <a href="<?php echo get_home_url(); ?>">Подбор авто</a>
-                    <span class="separator"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/dropdown.svg" alt="icon" class="svg"></span>
-                    <span class="breadcrumbs-item">Контакты</span>
-                </div>
+                <?get_template_part('/template-parts/breadcrumb');?>
                 <h1 class="h1"><?php the_title(); ?></h1>
                 <p class="medium-l"><?php the_field('hero-desc'); ?></p>
             </div>
@@ -282,7 +266,7 @@ get_header();
                 <div class="hero-contacts-left-socials-avatar">
                     <div class="hero-contacts-left-socials-avatar-img">
                         <?php $img = get_field('hero-avatar'); ?>
-                        <img src="<?php echo $img['url']; ?>" alt="avatar">
+                        <img src="<?php echo $img['url']; ?>" alt="avatar" title="avatar">
                     </div>
                     <div class="hero-contacts-left-socials-avatar-content">
                         <p class="h4"><?php the_field('hero-avatar-name'); ?></p>
@@ -301,7 +285,7 @@ get_header();
                         ?>
 
                         <a href="<?php echo $link; ?>" class="socials-item">
-                            <img src="<?php echo $icon['url']; ?>" alt="icon" class="svg">
+                            <img src="<?php echo $icon['url']; ?>" alt="icon" title="icon" class="svg">
                         </a>
                                 
                         <?php
@@ -314,8 +298,9 @@ get_header();
         </div>
         <div class="hero-contacts-right">
             <div class="hero-contacts-right-rating">
-                <?php $img = get_field('review-img', 13); ?>
-                <img src="<?php echo $img['url']; ?>" alt="review" class="svg">
+            <div style="margin-bottom: 20px;">
+        <iframe src="https://yandex.ru/sprav/widget/rating-badge/80106001971?type=rating&theme=light" width="150" height="50" frameborder="0"></iframe>
+    </div>
                 <p class="regular-s"><?php the_field('address', 'option'); ?></p>
                 <a href="<?php the_field('hero-map') ?>" class="secondary-btn semibold-s" target="blank">Посмотреть на карте</a>
             </div>
@@ -332,7 +317,7 @@ get_header();
             ?>
                         
                 <div class="brand-list-item">
-                    <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" class="svg">
+                    <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['title']); ?>" title="<?php echo esc_attr($image['title']); ?>" class="svg">
                 </div>
 
             <?php endforeach; ?>
@@ -340,6 +325,7 @@ get_header();
         <div class="main-btn semibold-s call-btn" data-text="Оставить заявку">Оставить заявку</div>
     </section>
 
+    
     <?php echo get_template_part( 'template-parts/tg' ); ?>
     <?php echo get_template_part( 'template-parts/form' ); ?>
 <?php endif; ?>  
@@ -349,7 +335,7 @@ get_header();
         <div class="thanks-wrap">
             <div class="thanks-wrap-left">
                 <?php $img = get_field('tg-img', 13); ?>
-                <img src="<?php echo $img['url']; ?>" alt="phone">
+                <img src="<?php echo $img['url']; ?>" alt="phone" title="phone">
             </div>
             <div class="thanks-wrap-right">
                 <h1 class="h1"><?php the_title(); ?></h1>
@@ -368,7 +354,7 @@ get_header();
                     ?>
 
                     <a href="<?php echo get_field('fixed-tg', 'option'); ?>" class="socials-item">
-                        <img src="<?php echo $icon['url']; ?>" alt="icon" class="svg">
+                        <img src="<?php echo $icon['url']; ?>" alt="icon" title="icon" class="svg">
                         <p class="semibold-s">Подписаться в Телеграм</p>
                         <span class="semibold-s">1K</span>
                     </a>
@@ -380,6 +366,26 @@ get_header();
                         wp_reset_postdata();
                     ?>
                 </div>
+            </div>
+        </div>
+    </section>
+<?php endif; ?>
+
+<?php if(is_page(3)) : ?>
+    <section class="news news-wrap" itemscope itemtype="http://schema.org/Article">
+        <div class="news-left">
+            
+        </div>
+        <div class="news-main">
+            <div class="breadcrumbs">
+                <a href="<?php echo get_home_url(); ?>">Подбор авто</a>
+                <span class="separator"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/dropdown.svg" alt="icon" class="svg"></span>
+                <span class="breadcrumbs-item"><?php the_title(); ?></span>
+            </div>
+            <h1 class="h1" itemprop="headline"><?php the_title(); ?></h1>
+        
+            <div class="news-main-content" itemprop="articleBody">
+                <?php the_content(); ?>
             </div>
         </div>
     </section>

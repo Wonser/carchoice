@@ -273,12 +273,12 @@ jQuery(document).ready(function($) {
       min: 1000000,
       max: 50000000,
       slide: function( event, ui ) {
-        $( ".range-input input" ).val( numberWithCommas(ui.value) );
+        $( ".form .range-input input" ).val( numberWithCommas(ui.value) );
       }
     });
-    $( ".range-input input" ).val( numberWithCommas($( "#slider-range" ).slider( "value" )) );
+    $( ".form .range-input input" ).val( numberWithCommas($( "#slider-range" ).slider( "value" )) );
 
-    $( ".range-input input" ).on('change', function(){
+    $( ".form .range-input input" ).on('change', function(){
       $val = parseInt($(this).val().replace(/\s/g,''));
       console.log($val); 
       $( "#slider-range" ).slider( "value", $val);
@@ -457,4 +457,89 @@ jQuery(document).ready(function($) {
     $temp.remove();
   })
 
+
+
+
+
+
+
+
+
+  if($( "#slider-range-price" ).length) {
+    $( "#slider-range-price" ).slider({
+      range: "min",
+      value: 2500000,
+      step: 100000,
+      min: 1000000,
+      max: 50000000,
+      slide: function( event, ui ) {
+        $( ".form-price" ).val( numberWithCommas(ui.value) );
+      }
+    });
+    $( ".form-price" ).val( numberWithCommas($( "#slider-range-price" ).slider( "value" )) );
+
+    $( ".form-price" ).on('change', function(){
+      $val = parseInt($(this).val().replace(/\s/g,''));
+      $( "#slider-range-price" ).slider( "value", $val);
+      $(this).val(numberWithCommas($val));
+
+      if($val > 50000000) {
+        $(this).val(numberWithCommas('50000000'));
+      }
+
+      if($val < 1000000) {
+        $(this).val(numberWithCommas('1000000'));
+      }
+    });
+  }
+
+  if($( "#slider-range-first" ).length) {
+    $( "#slider-range-first" ).slider({
+      range: "min",
+      value: 2500000,
+      step: 100000,
+      min: 1000000,
+      max: 50000000,
+      slide: function( event, ui ) {
+        $( ".form-first" ).val( numberWithCommas(ui.value) );
+      }
+    });
+    $( ".form-first" ).val( numberWithCommas($( "#slider-range-first" ).slider( "value" )) );
+
+    $( ".form-first" ).on('change', function(){
+      $val = parseInt($(this).val().replace(/\s/g,''));
+      $( "#slider-range-first" ).slider( "value", $val);
+      $(this).val(numberWithCommas($val));
+
+      if($val > 50000000) {
+        $(this).val(numberWithCommas('50000000'));
+      }
+
+      if($val < 1000000) {
+        $(this).val(numberWithCommas('1000000'));
+      }
+    });
+  }
+
+  $(document).on("click", ".calcu-nav-item:not(.active)", function () {
+    $(this)
+        .addClass("active")
+        .siblings()
+        .removeClass("active")
+        .closest(".calcu")
+        .find(".calcu-tab-item")
+        .removeClass("active")
+        .eq($(this).index())
+        .addClass("active");
+  });
+
+  $('.services-menu').on('click', function() {
+    $(this).toggleClass('active');
+    $(".services-modal-menu").toggleClass('active');
+  })
+
+  $('.services-modal-menu-overlay').on('click', function() {
+    $('.services-menu').removeClass('active');
+    $(".services-modal-menu").removeClass('active');
+  })
 });

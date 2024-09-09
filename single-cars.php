@@ -8,13 +8,7 @@ $card = get_field('card');
 <section class="catalog-card">
     <div class="catalog-card-left"></div>
     <div class="catalog-card-right">
-        <div class="breadcrumbs">
-            <a href="<?php echo get_home_url(); ?>">Подбор авто</a>
-            <span class="separator"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/dropdown.svg" alt="icon" class="svg"></span>
-            <a href="/cars">Подобранные авто</a>
-            <span class="separator"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/dropdown.svg" alt="icon" class="svg"></span>
-            <span class="breadcrumbs-item"><?php the_title(); ?></span>
-        </div>
+        <?get_template_part('/template-parts/breadcrumb');?>
         <h1 class="h1"><?php the_title(); ?></h1>
         <div class="catalog-card-right-inner">
             <p class="medium-s"><?php echo $card['date']; ?></p>
@@ -26,16 +20,16 @@ $card = get_field('card');
                 <div class="swiper-wrapper">
                     <?php foreach( $images as $image ): ?>
                         <a href="<?php echo esc_url($image['url']); ?>" class="swiper-slide" data-fancybox="gallery">
-                            <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
+                            <img src="<?php echo esc_url($image['sizes']['cars_thumbnail']); ?>" alt="<?php the_title(); ?>" title="<?php the_title(); ?>" />
                         </a>
                     <?php endforeach; ?>
                 </div>
                 <div class="swiper-nav">
                     <div class="swiper-button-prev">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/dropdown.svg" alt="arrow" class="svg">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/dropdown.svg" alt="arrow" title="arrow" class="svg">
                     </div>
                     <div class="swiper-button-next">
-                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/dropdown.svg" alt="arrow" class="svg">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/dropdown.svg" alt="arrow" title="arrow" class="svg">
                     </div>
                 </div>
             </div>
@@ -43,7 +37,7 @@ $card = get_field('card');
                 <div class="swiper-wrapper">
                     <?php foreach( $images as $image ): ?>
                         <div class="swiper-slide">
-                            <img src="<?php echo esc_url($image['sizes']['thumbnail']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
+                            <img src="<?php echo esc_url($image['sizes']['thumbnail']); ?>" alt="<?php the_title(); ?>" title="<?php the_title(); ?>" />
                         </div>
                     <?php endforeach; ?>
                 </div>
@@ -164,7 +158,7 @@ $card = get_field('card');
         ?>
 
         <div class="about-list-item partners-list-item">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/check.svg" alt="icon">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/check.svg" alt="icon" title="icon">
             <p class="h5"><?php echo $title; ?></p>
             <p class="regular-m"><?php echo $desc; ?></p>
         </div>
@@ -174,6 +168,7 @@ $card = get_field('card');
             wp_reset_postdata();
         ?>
     </div>
+
     <div class="swiper about-swiper">
         <div class="swiper-wrapper">
             <?php 
@@ -216,7 +211,7 @@ $card = get_field('card');
     ?>
         <div href="<?php the_permalink(); ?>" class="auto-list-item">
             <a href="<?php the_permalink(); ?>" class="auto-list-item-img">
-                <img src="<?php echo $card['img']['sizes']['large']; ?>" alt="photo">
+                <img src="<?php echo $card['img']['sizes']['blog_thumbnail']; ?>" alt="<?php the_title(); ?>" title="<?php the_title(); ?>">
             </a>
             <div class="auto-list-item-inner">
                 <p class="h4"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></p>

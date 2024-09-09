@@ -8,16 +8,24 @@
                 while( have_rows('list') ): the_row();
             ?>
 
-            <div class="prices-list-item swiper-slide">
+            <div class="prices-list-item swiper-slide" itemprop="offers" itemscope itemtype="http://schema.org/AggregateOffer">
                 <?php 
                     while( have_rows('elem') ): the_row();
                     
                     $name = get_sub_field('name');
                     $value = get_sub_field('value');
+                    $sale = get_sub_field('sale');
                 ?>
 
                 <p class="medium-m"><?php echo $name; ?></p>
-                <p class="h4"><?php echo $value; ?></p>
+                <p class="h4">
+                    <?php if($sale) : ?>
+                        <span class="old-price"><?php echo $value; ?></span>
+                        <span class="sale-price semibold-m"><?php echo $sale; ?></span>
+                    <?php else : ?>
+                        <?php echo $value; ?> 
+                    <?php endif; ?>
+                </p>
                     
                 <?php
                     endwhile; 
